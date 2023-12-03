@@ -1,9 +1,11 @@
-%Eliminacion gaussiana de una matriz A mediante pivoteo parcial
+%% Eliminacion gaussiana de una matriz A mediante pivoteo parcial
 A = input('Introduce una matriz cuadrada:');
 n = length(A);
 punt = 1:n;
 for k = 1:n
+    %Este pivote se calcula de la fila k a la fila n
     [~,pivote] = max(abs(A(k:n,k)));
+    %Para trasladarlo al indice de la matriz global, se  suma ( k -1)
     pivote = pivote + k -1 ;
     punt([k,pivote]) = punt([pivote,k]);
     for j = k+1:n
@@ -12,7 +14,7 @@ for k = 1:n
         A(punt(j),k) = mult;
     end
 end
-
+%Aplicamos el metodo de remonte
 b = input("introduce tu vector:");
 w = zeros(1,n);
 u = zeros(1,n);
@@ -33,9 +35,15 @@ for i = n-1:-1:1
     end
     u(i) = (w(i) - suma)/A(punt(i),i);
 end
+%Damos las soluciones
+disp('La matriz A es: ')
 disp(A)
+disp('El puntero es:')
 disp(punt)
+disp('Los vectores w y u calculados por remonte son:')
+disp('w =')
 disp(w)
+disp('u =')
 disp(u)
 
 
