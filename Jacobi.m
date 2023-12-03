@@ -23,8 +23,6 @@ J = eye(n) - P * A;
 disp('La matriz de Jacobi será:')
 disp(J)
 
-autovalores = eig(J); 
-abs_auto = abs(eig(J));
 radio_espectral = max(abs(eig(J)));
 
 if radio_espectral > 1
